@@ -9,6 +9,13 @@
       rel="stylesheet"
     />
     <style>
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+        overflow: auto;
+      }
+
       body {
         display: flex;
         justify-content: center;
@@ -195,11 +202,12 @@
       // Trigger floating hearts every second
       setInterval(() => createHearts(5), 1000);
 
-      // Play audio after page load
-      window.onload = () => {
-        document.getElementById("birthdaySong").muted = false; // Unmute after loading to avoid browser restrictions
-        document.getElementById("birthdaySong").play(); // Play the audio
-      };
+      document.addEventListener("click", () => {
+        const audio = document.getElementById("birthdaySong");
+        if (audio.paused) {
+          audio.play();
+        }
+      });
     </script>
   </body>
 </html>
