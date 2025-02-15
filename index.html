@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Birthday My Love</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family:Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(135deg, #ffccff, #ff99cc);
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        overflow: hidden;
+        position: relative;
+      }
+      .iphone-frame {
+        width: 90%;
+        max-width: 400px;
+        height: auto;
+        background: white;
+        border-radius: 40px;
+        box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        position: relative;
+        border: 10px solid #222;
+        padding: 20px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .iphone-notch {
+        width: 60%;
+        height: 20px;
+        background: black;
+        border-radius: 10px;
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      h1 {
+        font-family: "Dancing Script", cursive;
+        color: #ff0066;
+        font-size: 34px;
+        margin-top: 40px;
+        text-shadow: 2px 2px 8px rgba(255, 0, 102, 0.5);
+        animation: bloom 1.5s infinite alternate;
+      }
+      p {
+        font-family: "Pacifico", cursive;
+        font-size: 18px;
+        color: #660033;
+        opacity: 0;
+        animation: fadeIn 2s ease-in-out forwards;
+      }
+      .btn {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(45deg, #ff6699, #ff3366);
+        color: white;
+        padding: 12px 20px;
+        font-size: 18px;
+        border: none;
+        cursor: pointer;
+        border-radius: 10px;
+        transition: transform 0.3s, background 0.3s;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        margin-top: 10px;
+        animation: bloom 1.5s infinite alternate;
+      }
+      .btn:hover {
+        transform: scale(1.1);
+        background: linear-gradient(45deg, #ff3366, #ff6699);
+      }
+      .hidden-content {
+        display: none;
+        animation: fadeIn 2s ease-in-out;
+      }
+      img {
+        width: 80%;
+        max-width: 250px;
+        border-radius: 15px;
+        margin-top: 10px;
+        animation: bounce 2s infinite;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        align-self: center;
+      }
+      footer {
+        font-family: "Poppins", sans-serif;
+        font-size: 14px;
+        color: #ff0066;
+        background: rgba(255, 255, 255, 0.8);
+        padding: 8px;
+        text-align: center;
+        border-radius: 5px;
+        animation: bloom 1.5s infinite alternate;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+      @keyframes bloom {
+        0% {
+          text-shadow: 0 0 5px #ff0066, 0 0 10px #ff0066, 0 0 15px #ff0066;
+        }
+        100% {
+          text-shadow: 0 0 15px #ff0066, 0 0 30px #ff0066, 0 0 40px #ff0066;
+        }
+      }
+      .heart {
+        position: absolute;
+        font-size: 30px;
+        animation: floatHearts 4s ease-in forwards;
+        opacity: 0;
+      }
+      @keyframes floatHearts {
+        0% {
+          top: 100%;
+          opacity: 1;
+        }
+        100% {
+          top: -10%;
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <audio id="birthdaySong" src="Bacca.mp3" autoplay loop></audio>
+    <div class="iphone-frame">
+      <div class="iphone-notch"></div>
+      <h1>Happy Birthday, My Love! 🎂💖</h1>
+      <img src="Mamun.jpg" alt="Happy Birthday Image" />
+      <p>
+        On this special day, I just want to say how much I love you and cherish
+        every moment with you. 💕
+      </p>
+      <button class="btn" onclick="showSurprise()">
+        Click for a Surprise 🎁
+      </button>
+      <div id="hiddenContent" class="hidden-content">
+        <p>
+          You are the most beautiful and wonderful person in my life! I love you
+          forever! ❤️
+        </p>
+        <footer>
+          <p>
+            With all my love, Mamun. I'll do everything for you, so you stay
+            happy and healthy always. ❤️
+          </p>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      // Function to show the hidden message
+      function showSurprise() {
+        document.getElementById("hiddenContent").style.display = "block";
+      }
+
+      // Function to create floating hearts
+      function createHearts(num) {
+        for (let i = 0; i < num; i++) {
+          let heart = document.createElement("div");
+          heart.className = "heart";
+          heart.innerHTML = "❤️";
+          heart.style.left = Math.random() * 100 + "vw";
+          heart.style.fontSize = Math.random() * 20 + 30 + "px";
+          heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+          document.body.appendChild(heart);
+          setTimeout(() => heart.remove(), 4000); // Remove heart after animation
+        }
+      }
+
+      // Trigger floating hearts every second
+      setInterval(() => createHearts(5), 1000);
+
+      // Play audio after page load
+      window.onload = () => {
+        document.getElementById("birthdaySong").muted = false; // Unmute after loading to avoid browser restrictions
+        document.getElementById("birthdaySong").play(); // Play the audio
+      };
+    </script>
+  </body>
+</html>
